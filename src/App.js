@@ -13,6 +13,14 @@ const initialProjects = [
     started: false,
     completed: false,
   },
+
+  {
+    id: 3,
+    garment: "Cream Skirt",
+    fabric: "linen viscose",
+    started: true,
+    completed: true,
+  },
 ];
 
 export default function App() {
@@ -52,7 +60,7 @@ function ProjectList() {
 function Project({ project }) {
   return (
     <li>
-      <span>
+      <span style={project.completed ? { textDecoration: "line-through" } : {}}>
         {project.garment} ({project.fabric})
       </span>
       <button>❌</button>
