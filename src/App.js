@@ -3,6 +3,7 @@ const initialProjects = [
     id: 1,
     garment: "Shorts",
     fabric: "linen",
+    projectSize: "M",
     started: false,
     completed: false,
   },
@@ -10,6 +11,7 @@ const initialProjects = [
     id: 2,
     garment: "Black Dress",
     fabric: "viscose",
+    projectSize: "L",
     started: false,
     completed: false,
   },
@@ -18,6 +20,7 @@ const initialProjects = [
     id: 3,
     garment: "Cream Skirt",
     fabric: "linen viscose",
+    projectSize: "L",
     started: true,
     completed: true,
   },
@@ -40,9 +43,17 @@ function Logo() {
 
 function Form() {
   return (
-    <div className="add-form">
-      <h3>What do you want to add? </h3>
-    </div>
+    <form className="add-form">
+      <h3>What new project do you want to add? </h3>
+      <select>
+        {["XS", "S", "M", "L"].map((size) => (
+          <option value={size} key={size}>
+            {size}
+          </option>
+        ))}
+      </select>
+      <input type="text" placeholder="new project..." />
+    </form>
   );
 }
 function ProjectList() {
@@ -72,7 +83,7 @@ function Stats() {
   return (
     <em>
       <footer className="stats">
-        You have x items in your list, and you already bought{" "}
+        You have x items in your list, and you already finished{" "}
       </footer>
     </em>
   );
