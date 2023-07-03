@@ -1,16 +1,18 @@
 const initialProjects = [
   {
     id: 1,
-    garment: "Shorts",
-    fabric: "linen",
+    category: "sewing",
+    item: "Shorts",
+    material: "linen",
     projectSize: "M",
     started: false,
     completed: false,
   },
   {
     id: 2,
-    garment: "Black Dress",
-    fabric: "viscose",
+    category: "sewing",
+    item: "Black Dress",
+    material: "viscose",
     projectSize: "L",
     started: false,
     completed: false,
@@ -18,11 +20,22 @@ const initialProjects = [
 
   {
     id: 3,
-    garment: "Cream Skirt",
-    fabric: "linen viscose",
+    category: "sewing",
+    item: "Cream Skirt",
+    material: "linen viscose",
     projectSize: "L",
     started: true,
     completed: true,
+  },
+
+  {
+    id: 4,
+    category: "art",
+    item: "Christmas cards",
+    material: "gouache",
+    projectSize: "M",
+    started: false,
+    completed: false,
   },
 ];
 
@@ -38,13 +51,22 @@ export default function App() {
 }
 
 function Logo() {
-  return <h1>Sewing Projects</h1>;
+  return <h1>Creative Projects</h1>;
 }
 
 function Form() {
   return (
     <form className="add-form">
-      <h3>What new project do you want to add? </h3>
+      <h3>Project Type</h3>
+      <select>
+        {["Sewing", "Art", "Coding", "Interior", "Other"].map((type) => (
+          <option value={type} key={type}>
+            {type}
+          </option>
+        ))}
+      </select>
+
+      <h3>Project Size</h3>
       <select>
         {["XS", "S", "M", "L"].map((size) => (
           <option value={size} key={size}>
@@ -52,6 +74,8 @@ function Form() {
           </option>
         ))}
       </select>
+
+      <h3>Project Name</h3>
       <input type="text" placeholder="new project..." />
     </form>
   );
@@ -72,7 +96,7 @@ function Project({ project }) {
   return (
     <li>
       <span style={project.completed ? { textDecoration: "line-through" } : {}}>
-        {project.garment} ({project.fabric})
+        {project.item} ({project.material})
       </span>
       <button>❌</button>
     </li>
