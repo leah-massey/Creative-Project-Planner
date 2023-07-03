@@ -1,9 +1,11 @@
+import { useState } from "react";
+
 const initialProjects = [
   {
     id: 1,
     category: "sewing",
     item: "Shorts",
-    material: "linen",
+
     projectSize: "M",
     started: false,
     completed: false,
@@ -12,7 +14,7 @@ const initialProjects = [
     id: 2,
     category: "sewing",
     item: "Black Dress",
-    material: "viscose",
+
     projectSize: "L",
     started: false,
     completed: false,
@@ -22,7 +24,7 @@ const initialProjects = [
     id: 3,
     category: "sewing",
     item: "Cream Skirt",
-    material: "linen viscose",
+
     projectSize: "L",
     started: true,
     completed: true,
@@ -32,7 +34,7 @@ const initialProjects = [
     id: 4,
     category: "art",
     item: "Christmas cards",
-    material: "gouache",
+
     projectSize: "M",
     started: false,
     completed: false,
@@ -55,10 +57,40 @@ function Logo() {
 }
 
 function Form() {
+  const [projectDescription, setProjectDescription] = useState("");
+  const [projectSize, setProjectSize] = useState("XS");
+  const [projectType, setProjectType] = useState("Sewing");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!projectDescription) return;
+
+    const newProject = {
+      projectDescription,
+      projectType,
+
+      projectSize,
+      started: false,
+      completed: false,
+      id: Date.now(),
+    };
+    console.log(newProject);
+
+    setProjectDescription("");
+    setProjectSize("XS");
+    setProjectType("Sewing");
+  }
+
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>Project Type</h3>
-      <select>
+      <select
+        value={projectType}
+        onChange={(e) => {
+          setProjectType(e.target.value); // this is always a string - to make it a number : Number(e.target.value)
+        }}
+      >
         {["Sewing", "Art", "Coding", "Interior", "Other"].map((type) => (
           <option value={type} key={type}>
             {type}
@@ -67,7 +99,12 @@ function Form() {
       </select>
 
       <h3>Project Size</h3>
-      <select>
+      <select
+        value={projectSize}
+        onChange={(e) => {
+          setProjectSize(e.target.value);
+        }}
+      >
         {["XS", "S", "M", "L"].map((size) => (
           <option value={size} key={size}>
             {size}
@@ -75,8 +112,16 @@ function Form() {
         ))}
       </select>
 
-      <h3>Project Name</h3>
-      <input type="text" placeholder="new project..." />
+      <h3>Project Description</h3>
+      <input
+        type="text"
+        placeholder="new project..."
+        value={projectDescription}
+        onChange={(e) => {
+          setProjectDescription(e.target.value);
+        }}
+      />
+      <button>Add</button>
     </form>
   );
 }
@@ -85,7 +130,7 @@ function ProjectList() {
     <div className="list">
       <ul>
         {initialProjects.map((project) => (
-          <Project project={project} />
+          <Project project={project} key={project.id} />
         ))}
       </ul>
     </div>
