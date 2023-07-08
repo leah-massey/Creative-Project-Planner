@@ -48,12 +48,16 @@ export default function App() {
     setProjects((projects) => [...projects, project]); //we're not allowed to mutate an array in react - hence not using .push
   }
 
+  function handleDeleteProject(id) {
+    setProjects((projects) => projects.filter((project) => project.id !== id));
+  }
+
   return (
     <div className="app">
       <Logo />
       <Form onAddProjects={handleAddProjects} />
       {/* it's convention to write the above line like this */}
-      <ProjectList projects={projects} />
+      <ProjectList projects={projects} onDeleteProject={handleDeleteProject} />
       <Stats />
     </div>
   );
@@ -132,25 +136,30 @@ function Form({ onAddProjects }) {
     </form>
   );
 }
-function ProjectList({ projects }) {
+function ProjectList({ projects, onDeleteProject }) {
   return (
     <div className="list">
       <ul>
         {projects.map((project) => (
-          <Project project={project} key={project.id} />
+          <Project
+            project={project}
+            onDeleteProject={onDeleteProject}
+            key={project.id}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Project({ project }) {
+function Project({ project, onDeleteProject }) {
   return (
     <li>
       <span style={project.completed ? { textDecoration: "line-through" } : {}}>
         {project.projectDescription}
       </span>
-      <button>❌</button>
+      <button onClick={() => onDeleteProject(project.id)}>❌</button>
+      {/* above line written as fnunction as we only want react to call the event onClick. (without '() =>' the function would be called automatically) */}
     </li>
   );
 }
