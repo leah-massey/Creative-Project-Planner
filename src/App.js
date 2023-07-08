@@ -42,11 +42,18 @@ const initialProjects = [
 ];
 
 export default function App() {
+  const [projects, setProjects] = useState([]);
+
+  function handleAddProjects(project) {
+    setProjects((projects) => [...projects, project]); //we're not allowed to mutate an array in react - hence not using .push
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <ProjectList />
+      <Form onAddProjects={handleAddProjects} />
+      {/* it's convention to write the above line like this */}
+      <ProjectList projects={projects} />
       <Stats />
     </div>
   );
@@ -56,7 +63,7 @@ function Logo() {
   return <h1>Creative Projects</h1>;
 }
 
-function Form() {
+function Form({ onAddProjects }) {
   const [projectDescription, setProjectDescription] = useState("");
   const [projectSize, setProjectSize] = useState("XS");
   const [projectType, setProjectType] = useState("Sewing");
@@ -69,13 +76,13 @@ function Form() {
     const newProject = {
       projectDescription,
       projectType,
-
       projectSize,
       started: false,
       completed: false,
       id: Date.now(),
     };
     console.log(newProject);
+    onAddProjects(newProject);
 
     setProjectDescription("");
     setProjectSize("XS");
@@ -125,11 +132,11 @@ function Form() {
     </form>
   );
 }
-function ProjectList() {
+function ProjectList({ projects }) {
   return (
     <div className="list">
       <ul>
-        {initialProjects.map((project) => (
+        {projects.map((project) => (
           <Project project={project} key={project.id} />
         ))}
       </ul>
@@ -141,7 +148,7 @@ function Project({ project }) {
   return (
     <li>
       <span style={project.completed ? { textDecoration: "line-through" } : {}}>
-        {project.item} ({project.material})
+        {project.projectDescription}
       </span>
       <button>❌</button>
     </li>
