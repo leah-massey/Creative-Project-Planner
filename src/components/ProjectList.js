@@ -113,39 +113,43 @@ export default function ProjectList({
       </div> */}
 
       {/* sort by type */}
-      <div className="actions">
-        <p>
-          project type
-          <select
-            value={sortByType}
-            onChange={(e) => setSortByType(e.target.value)}
-          >
-            <option value="allTypes">All</option>
-            <option value="sewing">Sewing</option>
-            <option value="coding">Coding</option>
-            <option value="art">Art</option>
-            <option value="interior">Interior</option>
-            <option value="other">Other</option>
-          </select>
-        </p>
-      </div>
+      <div className="filter">
+        <div className="actions">
+          <p>
+            project type
+            <select
+              value={sortByType}
+              onChange={(e) => setSortByType(e.target.value)}
+            >
+              <option value="allTypes">All</option>
+              <option value="sewing">Sewing</option>
+              <option value="coding">Coding</option>
+              <option value="art">Art</option>
+              <option value="interior">Interior</option>
+              <option value="other">Other</option>
+            </select>
+          </p>
+        </div>
 
-      {/* sorting by size */}
-      <div className="actions">
-        <p>
-          size
-          <select
-            value={sortBySize}
-            onChange={(e) => setSortBySize(e.target.value)}
-          >
-            <option value="allSizes">All</option>
-            <option value="xs">XS</option>
-            <option value="s">S</option>
-            <option value="m">M</option>
-            <option value="l">L</option>
-          </select>
-          <button onClick={() => onClearList()}>Clear List</button>
-        </p>
+        {/* sorting by size */}
+        <div className="actions">
+          <p>
+            size
+            <select
+              value={sortBySize}
+              onChange={(e) => setSortBySize(e.target.value)}
+            >
+              <option value="allSizes">All</option>
+              <option value="xs">XS</option>
+              <option value="s">S</option>
+              <option value="m">M</option>
+              <option value="l">L</option>
+            </select>
+            <button className="clear-button" onClick={() => onClearList()}>
+              Clear List
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );

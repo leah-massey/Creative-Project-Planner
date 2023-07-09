@@ -12,16 +12,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@1&family=Roboto+Mono:wght@300&display=swap");
 
 @layer base {
-  body {
+  /* body {
     @apply font-[Roboto Mono];
-  }
+  } */
   li {
     @apply px-4;
     @apply cursor-pointer;
-  }
-  @font-face {
-    font-family: "Roboto Mono", monospace;
-    src: url(https://fonts.googleapis.com/css2?family=Baskervville:ital@1&display=swap);
   }
 }
 
@@ -36,7 +32,7 @@ html {
 }
 
 body {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-family: sans-serif;
   color: #474040;
   font-family: "Roboto Mono";
@@ -76,11 +72,16 @@ h1 {
   font-size: 4rem;
   word-spacing: 10px;
   padding-top: 6.5rem;
-  padding-bottom: 0;
+  padding-bottom: 0px;
+  margin-bottom: -10px;
 }
 
 .add-form {
-  background-color: #eff0f5;
+  border-bottom: 4px solid #00a4bd;
+  background-color: #9aadd5;
+  border-color: #5d6f94;
+  border-style: dashed;
+  /* background-color: #cfd4d4; */
   padding: 2.8rem 0;
   display: flex;
   align-items: center;
@@ -89,27 +90,42 @@ h1 {
 }
 
 h3 {
-  margin-right: 1.6rem;
-  font-size: 2.4rem;
+  margin-right: 0.5rem;
+  margin-left: 3rem;
+  font-size: 2rem;
 }
 
-button,
-select,
-input {
-  background-color: #ffebb3;
-  color: #342d35;
+.actions button {
+  color: #ffffff;
   font-family: inherit;
   border: none;
   border-radius: 10rem;
   padding: 1.2rem 3.2rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+select,
+input {
+  color: #4b4848;
+  font-family: inherit;
+  border: none;
+  border-radius: 10rem;
+  padding: 1.2rem 3.2rem;
   font-size: 1.8rem;
   cursor: pointer;
 }
 
 .add-form button {
   text-transform: uppercase;
-  background-color: #76c7ad;
+  background-color: #5d6f94;
+  color: #ffffff;
+  font-family: inherit;
+  border: none;
+  border-radius: 10rem;
+  padding: 1.2rem 3.2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
 }
 
 .list {
@@ -122,6 +138,10 @@ input {
   flex-direction: column;
   gap: 3.2rem;
   align-items: center;
+}
+
+.filter {
+  display: flex;
 }
 
 .actions button,
@@ -151,6 +171,10 @@ input {
   gap: 1.2rem;
 }
 
+.clear-button {
+  background-color: #de9d9d;
+}
+
 input[type="checkbox"] {
   height: 2rem;
   width: 2rem;
@@ -167,7 +191,7 @@ input[type="checkbox"] {
 }
 
 .stats {
-  background-color: #76c7ad;
+  background-color: #cfd4d4;
   text-align: center;
   font-weight: 700;
   padding: 3.2rem 0;

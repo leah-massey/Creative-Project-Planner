@@ -3,7 +3,7 @@ export default function Stats({ projects }) {
     return (
       <em>
         <footer className="stats">
-          You don't currently have any projecst on your list. Add something now
+          You don't currently have any projets on your list. Add something now
           and get making!
         </footer>
       </em>

@@ -28,7 +28,7 @@ export default function Form({ onAddProjects }) {
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>
-      <h3>Project Type</h3>
+      <h3>Type</h3>
       <select
         value={projectType}
         onChange={(e) => {
@@ -42,7 +42,7 @@ export default function Form({ onAddProjects }) {
         ))}
       </select>
 
-      <h3>Project Size</h3>
+      <h3>Size</h3>
       <select
         value={projectSize}
         onChange={(e) => {
@@ -56,7 +56,7 @@ export default function Form({ onAddProjects }) {
         ))}
       </select>
 
-      <h3>Project Description</h3>
+      <h3>Description</h3>
       <input
         type="text"
         placeholder="new project..."
