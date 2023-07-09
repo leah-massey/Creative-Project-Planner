@@ -116,7 +116,7 @@ export default function ProjectList({
       <div className="filter">
         <div className="actions">
           <p>
-            project type
+            Project Type
             <select
               value={sortByType}
               onChange={(e) => setSortByType(e.target.value)}
@@ -134,7 +134,7 @@ export default function ProjectList({
         {/* sorting by size */}
         <div className="actions">
           <p>
-            size
+            Size
             <select
               value={sortBySize}
               onChange={(e) => setSortBySize(e.target.value)}
