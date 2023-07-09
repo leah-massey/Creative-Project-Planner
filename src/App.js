@@ -21,6 +21,10 @@ export default function App() {
     );
   }
 
+  function handleClearList() {
+    setProjects([]);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -30,6 +34,7 @@ export default function App() {
         projects={projects}
         onDeleteProject={handleDeleteProject}
         onToggleProject={handleToggleProject}
+        onClearList={handleClearList}
       />
       <Stats projects={projects} />
       {/* 👆🏻 passing projects into stats as a prop. This prop now needs to be accepted as an argument in the stats function */}
@@ -111,7 +116,12 @@ function Form({ onAddProjects }) {
   );
 }
 
-function ProjectList({ projects, onDeleteProject, onToggleProject }) {
+function ProjectList({
+  projects,
+  onDeleteProject,
+  onToggleProject,
+  onClearList,
+}) {
   const [sortByType, setSortByType] = useState("allTypes");
   const [sortBySize, setSortBySize] = useState("allSizes");
   // const [sortByStatus, setSortByStatus] = useState("all");
@@ -249,6 +259,7 @@ function ProjectList({ projects, onDeleteProject, onToggleProject }) {
             <option value="m">M</option>
             <option value="l">L</option>
           </select>
+          <button onClick={() => onClearList()}>Clear List</button>
         </p>
       </div>
     </div>
