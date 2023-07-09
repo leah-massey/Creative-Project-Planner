@@ -31,7 +31,8 @@ export default function App() {
         onDeleteProject={handleDeleteProject}
         onToggleProject={handleToggleProject}
       />
-      <Stats />
+      <Stats projects={projects} />
+      {/* 👆🏻 passing projects into stats as a prop. This prop now needs to be accepted as an argument in the stats function */}
     </div>
   );
 }
@@ -143,11 +144,16 @@ function Project({ project, onDeleteProject, onToggleProject }) {
   );
 }
 
-function Stats() {
+function Stats({ projects }) {
+  const numProjects = projects.length;
+  const numCompleted = projects.filter(
+    (project) => project.completed === true
+  ).length;
   return (
     <em>
       <footer className="stats">
-        You have x items in your list, and you already finished{" "}
+        You have {numProjects} items in your list, {numCompleted} of which you
+        have completed.
       </footer>
     </em>
   );
