@@ -145,6 +145,16 @@ function Project({ project, onDeleteProject, onToggleProject }) {
 }
 
 function Stats({ projects }) {
+  if (projects.length === 0) {
+    return (
+      <em>
+        <footer className="stats">
+          You don't currently have any projecst on your list. Surely there's
+          something you'd like to be making?
+        </footer>
+      </em>
+    );
+  }
   const numProjects = projects.length;
   const numCompleted = projects.filter(
     (project) => project.completed === true
@@ -152,9 +162,7 @@ function Stats({ projects }) {
   return (
     <em>
       <footer className="stats">
-        {numProjects === 0
-          ? "You don't currently have any projecst on your list. Surely there's something you'd like to be making?"
-          : numProjects === numCompleted
+        {numProjects === numCompleted
           ? "You have completed all of your projects 💪🏻"
           : numProjects === 1
           ? "You have one project on your list."
