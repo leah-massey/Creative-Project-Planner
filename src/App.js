@@ -111,10 +111,17 @@ function Form({ onAddProjects }) {
   );
 }
 function ProjectList({ projects, onDeleteProject, onToggleProject }) {
+  const [sortBy, setSortBy] = useState("newest");
+
+  let sortedProjects;
+  // refcator using case???
+  if (sortBy === "newest") sortedProjects = projects;
+  if (sortBy === "oldest") sortedProjects = [...projects].reverse();
+
   return (
     <div className="list">
       <ul>
-        {projects.map((project) => (
+        {sortedProjects.map((project) => (
           <Project
             project={project}
             onDeleteProject={onDeleteProject}
@@ -123,6 +130,18 @@ function ProjectList({ projects, onDeleteProject, onToggleProject }) {
           />
         ))}
       </ul>
+      <div className="actions">
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="size">Sort by project size</option>
+          <option value="oldest">Sort by oldest</option>
+          <option value="newest">Sort by newest</option>
+          <option value="sewing">View only Sewing projects</option>
+          <option value="coding">View only Coding projects</option>
+          <option value="art">View only Art projects</option>
+          <option value="interior">View only Interior projects</option>
+          <option value="other">View only Other projects</option>
+        </select>
+      </div>
     </div>
   );
 }
