@@ -4,6 +4,27 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Quicksand:wght@500;700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@1&display=swap");
+
+/* font typewriting  */
+@import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@1&family=Roboto+Mono:wght@300&display=swap");
+
+@layer base {
+  body {
+    @apply font-[Roboto Mono];
+  }
+  li {
+    @apply px-4;
+    @apply cursor-pointer;
+  }
+  @font-face {
+    font-family: "Roboto Mono", monospace;
+    src: url(https://fonts.googleapis.com/css2?family=Baskervville:ital@1&display=swap);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +39,7 @@ body {
   font-size: 2.4rem;
   font-family: sans-serif;
   color: #474040;
-  font-family: "Quicksand";
+  font-family: "Roboto Mono";
   font-weight: 500;
 }
 
@@ -29,16 +50,33 @@ body {
   grid-template-rows: auto auto 1fr auto;
 }
 
+.logo {
+  background-image: url("./images/paint.jpg");
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  max-width: 1000px;
+  height: 250px;
+  margin: auto;
+}
+
 h1 {
+  margin: auto;
   text-align: center;
-  background-color: #f8e9e9;
-  font-family: "Didot";
-  font-size: 8rem;
+  font-family: "Roboto Mono";
+  font-size: 6rem;
   text-transform: uppercase;
-  font-weight: 400;
-  word-spacing: 30px;
-  letter-spacing: -5px;
-  padding: 2.4rem 0;
+  font-weight: 600;
+  word-spacing: 15px;
+  letter-spacing: 8px;
+}
+
+.top-heading {
+  font-size: 4rem;
+  word-spacing: 10px;
+  padding-top: 6.5rem;
+  padding-bottom: 0;
 }
 
 .add-form {
