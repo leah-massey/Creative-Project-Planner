@@ -22,7 +22,10 @@ export default function App() {
   }
 
   function handleClearList() {
-    setProjects([]);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items from your project list?"
+    );
+    if (confirmed) setProjects([]);
   }
 
   return (
