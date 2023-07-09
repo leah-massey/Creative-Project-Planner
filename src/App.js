@@ -117,6 +117,10 @@ function ProjectList({ projects, onDeleteProject, onToggleProject }) {
   // refcator using case???
   if (sortBy === "newest") sortedProjects = projects;
   if (sortBy === "oldest") sortedProjects = [...projects].reverse();
+  if (sortBy === "sewing")
+    sortedProjects = projects.filter(
+      (project) => project.projectType === "Sewing"
+    );
 
   return (
     <div className="list">
