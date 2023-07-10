@@ -84,39 +84,14 @@ export default function ProjectList({
         ))}
       </ul>
 
-      {/*//* sort by date not currently working*/}
-      {/* <div className="actions">
-        <p>
-          by date
-          <select
-            value={sortByDate}
-            onChange={(e) => setSortByDate(e.target.value)}
-          >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-          </select>
-        </p>
-      </div> */}
-
-      {/* //* sort by status not currenlty working*/}
-      {/* <div className="actions">
-        <p>
-          project status
-          <select
-            value={sortByType}
-            onChange={(e) => setSortByStatus(e.target.value)}
-          >
-            <option value="all">All</option>
-            <option value="incomplete">incomplete</option>
-          </select>
-        </p>
-      </div> */}
-
       {/* sort by type */}
       <div className="filter">
+        <div className="filter-heading">
+          <p>Filter by: </p>
+        </div>
         <div className="actions">
           <p>
-            Project Type
+            Type
             <select
               value={sortByType}
               onChange={(e) => setSortByType(e.target.value)}
@@ -150,6 +125,34 @@ export default function ProjectList({
             </button>
           </p>
         </div>
+
+        {/*//* sort by date not currently working*/}
+        {/* <div className="actions">
+        <p>
+          by date
+          <select
+            value={sortByDate}
+            onChange={(e) => setSortByDate(e.target.value)}
+          >
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </p>
+      </div> */}
+
+        {/* //* sort by status not currenlty working*/}
+        {/* <div className="actions">
+        <p>
+          project status
+          <select
+            value={sortByType}
+            onChange={(e) => setSortByStatus(e.target.value)}
+          >
+            <option value="all">All</option>
+            <option value="incomplete">incomplete</option>
+          </select>
+        </p>
+      </div> */}
       </div>
     </div>
   );
