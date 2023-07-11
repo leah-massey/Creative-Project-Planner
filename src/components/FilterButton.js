@@ -5,9 +5,10 @@ function FilterButton(props) {
     <button
       type="button"
       className="btn pale-btn toggle-btn"
-      aria-pressed="true"
+      aria-pressed={props.isPressed}
+      onClick={() => props.setFilterByCompletion(props.name)}
     >
-      all
+      {props.name}
     </button>
   );
 }

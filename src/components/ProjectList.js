@@ -2,18 +2,33 @@ import { useState } from "react";
 import Project from "./Project";
 import FilterButton from "./FilterButton";
 
+const FILTER_MAP = {
+  All: () => true,
+  Active: (project) => !project.completed,
+  Completed: (project) => project.completed,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 export default function ProjectList({
   projects,
   onDeleteProject,
   onToggleProject,
   onClearList,
-  onViewCompletedProjects,
-  onViewActiveProjects,
 }) {
   const [sortByType, setSortByType] = useState("allTypes");
   const [sortBySize, setSortBySize] = useState("allSizes");
+  const [filterByCompletion, setFilterByCompletion] = useState("All");
   // const [sortByStatus, setSortByStatus] = useState("all");
   // const [sortByDate, setSortByDate] = useState("newest");
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={name}
+      name={name}
+      isPressed={name === filterByCompletion}
+      setFilterByCompletion={setFilterByCompletion}
+    />
+  ));
 
   let sortedProjects;
 
@@ -76,20 +91,18 @@ export default function ProjectList({
 
   return (
     <div className="list">
-      <div className="filters actions">
-        <FilterButton />
-        <FilterButton />
-        <FilterButton />
-      </div>
+      <div className="filters actions">{filterList}</div>
       <ul>
-        {sortedProjects.map((project) => (
-          <Project
-            project={project}
-            onDeleteProject={onDeleteProject}
-            key={project.id}
-            onToggleProject={onToggleProject}
-          />
-        ))}
+        {sortedProjects
+          .filter(FILTER_MAP[filterByCompletion])
+          .map((project) => (
+            <Project
+              project={project}
+              onDeleteProject={onDeleteProject}
+              key={project.id}
+              onToggleProject={onToggleProject}
+            />
+          ))}
       </ul>
 
       {/* sort by type */}
