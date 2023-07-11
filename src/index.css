@@ -54,12 +54,8 @@ body {
 }
 .logo {
   background-color: #ffffff;
-  /* background-repeat: no-repeat;
-  background-size: cover; */
-  /* background-position: center; */
   width: 60%;
   max-width: 700px;
-
   height: 250px;
   margin: auto;
   color: #cccccc;
@@ -97,12 +93,10 @@ h1 {
 }
 
 .add-form {
-  border-bottom: 18px solid #00a4bd;
+  border-bottom: 18px;
   background-color: #7ab4e4;
-  /* background-color: #9aadd5; */
   border-color: #ffffff;
   border-style: solid;
-  /* background-color: #cfd4d4; */
   padding: 2.8rem 0;
   display: flex;
   align-items: center;
@@ -116,19 +110,30 @@ h3 {
   font-size: 2rem;
 }
 
+/** BUTTONS */
+
 .btn {
+  text-transform: uppercase;
   color: #ffffff;
   font-family: inherit;
-  border: none;
+
   border-radius: 10rem;
   padding: 1.2rem 3.2rem;
   font-size: 1.8rem;
   cursor: pointer;
 }
 
+.dark-btn {
+  background-color: #f4786d;
+}
+
 .toggle-btn {
+}
+
+.btn.toggle-btn[aria-pressed="true"] {
+  border-style: solid;
   border-width: 1px;
-  border-color: #242020;
+  border-color: #4d4d4d;
 }
 
 .pale-btn {
@@ -143,20 +148,6 @@ input {
   border-radius: 10rem;
   padding: 1.2rem 3.2rem;
   font-size: 1.8rem;
-  cursor: pointer;
-}
-
-.add-form button {
-  text-transform: uppercase;
-  background-color: #f4786d;
-  /* background-color: #5d6f94; */
-  color: #ffffff;
-  font-family: inherit;
-  border: none;
-  border-radius: 10rem;
-  padding: 1.2rem 3.2rem;
-  font-size: 1.8rem;
-
   cursor: pointer;
 }
 

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Project from "./Project";
+import FilterButton from "./FilterButton";
 
 export default function ProjectList({
   projects,
   onDeleteProject,
   onToggleProject,
   onClearList,
+  onViewCompletedProjects,
+  onViewActiveProjects,
 }) {
   const [sortByType, setSortByType] = useState("allTypes");
   const [sortBySize, setSortBySize] = useState("allSizes");
@@ -74,27 +77,9 @@ export default function ProjectList({
   return (
     <div className="list">
       <div className="filters actions">
-        <button
-          type="button"
-          className="btn pale-btn toggle-btn"
-          aria-pressed="true"
-        >
-          all
-        </button>
-        <button
-          type="button"
-          className="btn pale-btn toggle-btn"
-          aria-pressed="false"
-        >
-          active
-        </button>
-        <button
-          type="button"
-          className="btn pale-btn toggle-btn"
-          aria-pressed="false"
-        >
-          completed
-        </button>
+        <FilterButton />
+        <FilterButton />
+        <FilterButton />
       </div>
       <ul>
         {sortedProjects.map((project) => (
@@ -119,7 +104,7 @@ export default function ProjectList({
               value={sortByType}
               onChange={(e) => setSortByType(e.target.value)}
             >
-              <option value="allTypes">All</option>
+              <option value="allTypes"></option>
               <option value="sewing">Sewing</option>
               <option value="coding">Coding</option>
               <option value="art">Art</option>
@@ -137,7 +122,7 @@ export default function ProjectList({
               value={sortBySize}
               onChange={(e) => setSortBySize(e.target.value)}
             >
-              <option value="allSizes">All</option>
+              <option value="allSizes"></option>
               <option value="xs">XS</option>
               <option value="s">S</option>
               <option value="m">M</option>
