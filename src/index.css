@@ -116,7 +116,7 @@ h3 {
   font-size: 2rem;
 }
 
-.actions button {
+.btn {
   color: #ffffff;
   font-family: inherit;
   border: none;
@@ -124,6 +124,15 @@ h3 {
   padding: 1.2rem 3.2rem;
   font-size: 1.8rem;
   cursor: pointer;
+}
+
+.toggle-btn {
+  border-width: 1px;
+  border-color: #242020;
+}
+
+.pale-btn {
+  background-color: #f9aaa3;
 }
 
 select,
@@ -216,10 +225,6 @@ input {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-}
-
-.clear-button {
-  background-color: #f9aaa3;
 }
 
 input[type="checkbox"] {

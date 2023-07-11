@@ -73,6 +73,29 @@ export default function ProjectList({
 
   return (
     <div className="list">
+      <div className="filters actions">
+        <button
+          type="button"
+          className="btn pale-btn toggle-btn"
+          aria-pressed="true"
+        >
+          all
+        </button>
+        <button
+          type="button"
+          className="btn pale-btn toggle-btn"
+          aria-pressed="false"
+        >
+          active
+        </button>
+        <button
+          type="button"
+          className="btn pale-btn toggle-btn"
+          aria-pressed="false"
+        >
+          completed
+        </button>
+      </div>
       <ul>
         {sortedProjects.map((project) => (
           <Project
@@ -120,7 +143,10 @@ export default function ProjectList({
               <option value="m">M</option>
               <option value="l">L</option>
             </select>
-            <button className="clear-button" onClick={() => onClearList()}>
+            <button
+              className="btn pale-btn toggle-btn"
+              onClick={() => onClearList()}
+            >
               Clear List
             </button>
           </p>
