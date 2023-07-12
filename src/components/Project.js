@@ -5,7 +5,7 @@ export default function Project({ project, onDeleteProject, onToggleProject }) {
     <li>
       <input
         type="checkbox"
-        value={project.completed}
+        checked={project.completed}
         onChange={() => onToggleProject(project.id)}
       />
       <span style={project.completed ? { textDecoration: "line-through" } : {}}>

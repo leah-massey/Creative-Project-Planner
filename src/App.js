@@ -36,6 +36,7 @@ export default function App() {
     <div className="app">
       <Logo />
       <Form onAddProjects={handleAddProjects} />
+
       <ProjectList
         projects={projects}
         onDeleteProject={handleDeleteProject}

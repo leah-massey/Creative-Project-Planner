@@ -1,5 +1,14 @@
 import { useState } from "react";
 import Project from "./Project";
+import FilterButton from "./FilterButton";
+
+const FILTER_MAP = {
+  All: () => true,
+  Active: (project) => !project.completed,
+  Completed: (project) => project.completed,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 export default function ProjectList({
   projects,
@@ -9,21 +18,19 @@ export default function ProjectList({
 }) {
   const [sortByType, setSortByType] = useState("allTypes");
   const [sortBySize, setSortBySize] = useState("allSizes");
+  const [filterByCompletion, setFilterByCompletion] = useState("All");
   // const [sortByStatus, setSortByStatus] = useState("all");
   // const [sortByDate, setSortByDate] = useState("newest");
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={name}
+      name={name}
+      isPressed={name === filterByCompletion}
+      setFilterByCompletion={setFilterByCompletion}
+    />
+  ));
 
   let sortedProjects;
-
-  //* sorting by date not currently working 👇🏻
-  // if (sortByDate === "newest") sortedProjects = projects;
-  // if (sortByDate === "oldest") sortedProjects = projects.slice().reverse();
-
-  //* sorting by status not currently working
-  // if (sortByStatus === "all") sortedProjects = projects;
-  // if (sortByStatus === "incomplete")
-  //   sortedProjects = projects
-  //     .slice()
-  //     .sort((a, b) => Number(!a.complete) - Number(!b.complete));
 
   // sorting by type
   if (sortByType === "allTypes") sortedProjects = projects;
@@ -73,16 +80,21 @@ export default function ProjectList({
 
   return (
     <div className="list">
-      <ul>
-        {sortedProjects.map((project) => (
-          <Project
-            project={project}
-            onDeleteProject={onDeleteProject}
-            key={project.id}
-            onToggleProject={onToggleProject}
-          />
-        ))}
-      </ul>
+      <>
+        <div className="filters actions">{filterList}</div>
+        <ul>
+          {sortedProjects
+            .filter(FILTER_MAP[filterByCompletion])
+            .map((project) => (
+              <Project
+                project={project}
+                onDeleteProject={onDeleteProject}
+                key={project.id}
+                onToggleProject={onToggleProject}
+              />
+            ))}
+        </ul>
+      </>
 
       {/* sort by type */}
       <div className="filter">
@@ -96,7 +108,7 @@ export default function ProjectList({
               value={sortByType}
               onChange={(e) => setSortByType(e.target.value)}
             >
-              <option value="allTypes">All</option>
+              <option value="allTypes"></option>
               <option value="sewing">Sewing</option>
               <option value="coding">Coding</option>
               <option value="art">Art</option>
@@ -114,45 +126,20 @@ export default function ProjectList({
               value={sortBySize}
               onChange={(e) => setSortBySize(e.target.value)}
             >
-              <option value="allSizes">All</option>
+              <option value="allSizes"></option>
               <option value="xs">XS</option>
               <option value="s">S</option>
               <option value="m">M</option>
               <option value="l">L</option>
             </select>
-            <button className="clear-button" onClick={() => onClearList()}>
+            <button
+              className="btn pale-btn toggle-btn"
+              onClick={() => onClearList()}
+            >
               Clear List
             </button>
           </p>
         </div>
-
-        {/*//* sort by date not currently working*/}
-        {/* <div className="actions">
-        <p>
-          by date
-          <select
-            value={sortByDate}
-            onChange={(e) => setSortByDate(e.target.value)}
-          >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-          </select>
-        </p>
-      </div> */}
-
-        {/* //* sort by status not currenlty working*/}
-        {/* <div className="actions">
-        <p>
-          project status
-          <select
-            value={sortByType}
-            onChange={(e) => setSortByStatus(e.target.value)}
-          >
-            <option value="all">All</option>
-            <option value="incomplete">incomplete</option>
-          </select>
-        </p>
-      </div> */}
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ export default function Form({ onAddProjects }) {
           setProjectDescription(e.target.value);
         }}
       />
-      <button>Add</button>
+      <button className="btn dark-btn">Add</button>
     </form>
   );
 }
