@@ -32,17 +32,6 @@ export default function ProjectList({
 
   let sortedProjects;
 
-  //* sorting by date not currently working 👇🏻
-  // if (sortByDate === "newest") sortedProjects = projects;
-  // if (sortByDate === "oldest") sortedProjects = projects.slice().reverse();
-
-  //* sorting by status not currently working
-  // if (sortByStatus === "all") sortedProjects = projects;
-  // if (sortByStatus === "incomplete")
-  //   sortedProjects = projects
-  //     .slice()
-  //     .sort((a, b) => Number(!a.complete) - Number(!b.complete));
-
   // sorting by type
   if (sortByType === "allTypes") sortedProjects = projects;
 
@@ -91,19 +80,21 @@ export default function ProjectList({
 
   return (
     <div className="list">
-      <div className="filters actions">{filterList}</div>
-      <ul>
-        {sortedProjects
-          .filter(FILTER_MAP[filterByCompletion])
-          .map((project) => (
-            <Project
-              project={project}
-              onDeleteProject={onDeleteProject}
-              key={project.id}
-              onToggleProject={onToggleProject}
-            />
-          ))}
-      </ul>
+      <>
+        <div className="filters actions">{filterList}</div>
+        <ul>
+          {sortedProjects
+            .filter(FILTER_MAP[filterByCompletion])
+            .map((project) => (
+              <Project
+                project={project}
+                onDeleteProject={onDeleteProject}
+                key={project.id}
+                onToggleProject={onToggleProject}
+              />
+            ))}
+        </ul>
+      </>
 
       {/* sort by type */}
       <div className="filter">
@@ -149,34 +140,6 @@ export default function ProjectList({
             </button>
           </p>
         </div>
-
-        {/*//* sort by date not currently working*/}
-        {/* <div className="actions">
-        <p>
-          by date
-          <select
-            value={sortByDate}
-            onChange={(e) => setSortByDate(e.target.value)}
-          >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-          </select>
-        </p>
-      </div> */}
-
-        {/* //* sort by status not currenlty working*/}
-        {/* <div className="actions">
-        <p>
-          project status
-          <select
-            value={sortByType}
-            onChange={(e) => setSortByStatus(e.target.value)}
-          >
-            <option value="all">All</option>
-            <option value="incomplete">incomplete</option>
-          </select>
-        </p>
-      </div> */}
       </div>
     </div>
   );
