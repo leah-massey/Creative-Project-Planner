@@ -1,3 +1,16 @@
+<p align="center">
+<img src="./src/images/screenshot.png" alt="Screenshot of project" title="Creative Project Planner">
+</p>
+
+The Creative Project Planner allows a user to manage their creative projects. <br />
+<br />
+Each project must be categorized by type and size and have a description befor ebeing added.
+<br />
+<br />
+Once added, projects can be filtered by type and by size. Completed projects can be ticked off and will appear with a strike through.
+<br />
+<br />
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
