@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./components/Logo";
 import Form from "./components/Form";
 import ProjectList from "./components/ProjectList";
 import Stats from "./components/Stats";
 
+const projectsFromLocalStorage = JSON.parse(
+  localStorage.getItem("projects") || "[]"
+);
+
 export default function App() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(projectsFromLocalStorage);
+
+  useEffect(() => {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }, [projects]);
 
   function handleAddProjects(project) {
     setProjects((projects) => [...projects, project]); //we're not allowed to mutate an array in react - hence not using .push
