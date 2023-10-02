@@ -16,6 +16,9 @@ Once added, projects can be filtered by type and by size and state (completed or
 The entire list can be cleared by clicking the 'clear list' button.
 <br />
 <br />
+Session persistence allows a user to return to / refresh their list without the items disappearing.
+<br />
+<br />
 
 # Getting Started with Create React App
 
