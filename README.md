@@ -7,7 +7,7 @@ The Creative Project Planner allows a user to manage their creative projects. <b
 Each project must be categorized by type and size and have a description before being added.
 <br />
 <br />
-Completed projects can be ticked off and will appear with a strike through.
+Completed projects can be ticked off and will appear with a strike through their description.
 <br />
 <br />
 Once added, projects can be filtered by type and by size and state (completed or active).
